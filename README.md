@@ -165,6 +165,14 @@ import './denburrow.css';
 
 Reference assets from the public/static directory as usual.
 
+## Used by
+
+- **den-burrow/mortgage-calculator** — imports `denburrow.css` (full standard).
+- **den-burrow/subinvoice** (invoice.denandburrow.com) — Tailwind app; imports
+  `tokens.css` and bridges its Tailwind theme to the `--db-*` vars.
+- **Dashboard** (Apps Script) — the original source of these tokens; mirrors them
+  inline because Apps Script can't install npm packages. Keep it in sync.
+
 ## Versioning & contributions
 
 `denburrow.css` carries a version comment at the top. When the brand changes:
