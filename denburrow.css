@@ -1,0 +1,451 @@
+/* ==========================================================================
+   Den & Burrow — Shared Design Standard
+   denburrow.css · v1.0.0
+
+   Drop-in stylesheet for *.denandburrow.com internal tools. Framework-agnostic:
+   works with plain HTML, React, Apps Script, etc. Pairs with the "DB" monogram
+   assets in ./assets.
+
+   Usage:
+     <link rel="stylesheet" href="denburrow.css">
+   Then use the tokens (CSS variables) and the optional component classes below.
+
+   Dark mode is opt-in via [data-theme="dark"] on <html>. See README.md for the
+   recommended pre-paint script that avoids a flash of the wrong theme.
+   ========================================================================== */
+
+/* ---------- Design tokens ---------- */
+
+:root {
+  /* Surfaces & text */
+  --db-bg: #f7f7f8;
+  --db-card: #ffffff;
+  --db-border: #e5e5ea;
+  --db-border-strong: #d2d2d7;
+  --db-text: #1d1d1f;
+  --db-muted: #6e6e73;
+
+  /* Brand / state */
+  --db-accent: #0071e3;
+  --db-accent-hover: #0077ed;
+  --db-danger: #d70015;
+  --db-success: #1d7d4f;
+
+  /* Elevation */
+  --db-shadow: 0 1px 3px rgba(0, 0, 0, 0.04), 0 1px 2px rgba(0, 0, 0, 0.02);
+  --db-shadow-hover: 0 4px 12px rgba(0, 0, 0, 0.08), 0 2px 4px rgba(0, 0, 0, 0.04);
+
+  /* Radii */
+  --db-radius-sm: 8px;
+  --db-radius-md: 10px;
+  --db-radius-lg: 12px;
+
+  /* Type */
+  --db-font: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Segoe UI', Roboto, sans-serif;
+
+  /* Logo (swap the paths if your assets live elsewhere) */
+  --db-logo: url('./assets/logo-144.png');
+  --db-logo-dark: url('./assets/logo-gold-144.png');
+
+  color-scheme: light;
+}
+
+[data-theme='dark'] {
+  --db-bg: #1c1c1e;
+  --db-card: #2c2c2e;
+  --db-border: #38383a;
+  --db-border-strong: #48484a;
+  --db-text: #f5f5f7;
+  --db-muted: #98989d;
+
+  --db-accent: #0a84ff;
+  --db-accent-hover: #409cff;
+  --db-danger: #ff453a;
+  --db-success: #30d158;
+
+  --db-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+  --db-shadow-hover: 0 4px 12px rgba(0, 0, 0, 0.5);
+
+  color-scheme: dark;
+}
+
+/* ---------- Base ---------- */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  font-family: var(--db-font);
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--db-text);
+  background: var(--db-bg);
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  margin: 0 0 0.5em;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+}
+
+h1 { font-size: clamp(1.4rem, 3vw, 1.85rem); }
+h2 { font-size: 1.15rem; letter-spacing: -0.01em; }
+h3 { font-size: 0.95rem; }
+
+a {
+  color: var(--db-accent);
+  text-decoration: none;
+}
+
+a:hover {
+  color: var(--db-accent-hover);
+  text-decoration: underline;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+  color: inherit;
+}
+
+:focus-visible {
+  outline: 2px solid var(--db-accent);
+  outline-offset: 2px;
+}
+
+/* ---------- Layout ---------- */
+
+.db-container {
+  width: min(1120px, calc(100% - 32px));
+  margin: 0 auto;
+  padding: 32px 0 64px;
+}
+
+/* ---------- Header / brand ---------- */
+
+.db-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 28px;
+}
+
+.db-brand {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  min-width: 0;
+}
+
+.db-logo {
+  width: 40px;
+  height: 40px;
+  flex-shrink: 0;
+  background-image: var(--db-logo);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+[data-theme='dark'] .db-logo {
+  background-image: var(--db-logo-dark);
+}
+
+.db-brand h1 {
+  margin: 0;
+}
+
+.db-brand-sub {
+  margin: 2px 0 0;
+  font-size: 0.85rem;
+  color: var(--db-muted);
+}
+
+/* ---------- Eyebrow / section label ---------- */
+
+.db-eyebrow {
+  margin: 0 0 8px;
+  color: var(--db-muted);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+/* ---------- Card ---------- */
+
+.db-card {
+  background: var(--db-card);
+  border: 1px solid var(--db-border);
+  border-radius: var(--db-radius-lg);
+  box-shadow: var(--db-shadow);
+  padding: clamp(18px, 3vw, 28px);
+}
+
+.db-card--interactive {
+  transition: transform 0.15s, box-shadow 0.15s, border-color 0.15s;
+}
+
+.db-card--interactive:hover {
+  transform: translateY(-1px);
+  box-shadow: var(--db-shadow-hover);
+  border-color: var(--db-border-strong);
+}
+
+/* ---------- Buttons ---------- */
+
+.db-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 42px;
+  padding: 0.55rem 1.1rem;
+  border: 1px solid transparent;
+  border-radius: var(--db-radius-sm);
+  font-size: 0.9rem;
+  font-weight: 500;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s, opacity 0.15s;
+}
+
+.db-btn:disabled {
+  cursor: not-allowed;
+  opacity: 0.55;
+}
+
+.db-btn--primary {
+  color: #ffffff;
+  background: var(--db-text);
+}
+
+.db-btn--primary:hover:not(:disabled) {
+  background: #000000;
+}
+
+[data-theme='dark'] .db-btn--primary {
+  color: #1d1d1f;
+  background: #f5f5f7;
+}
+
+[data-theme='dark'] .db-btn--primary:hover:not(:disabled) {
+  background: #ffffff;
+}
+
+.db-btn--accent {
+  color: #ffffff;
+  background: var(--db-accent);
+}
+
+.db-btn--accent:hover:not(:disabled) {
+  background: var(--db-accent-hover);
+}
+
+.db-btn--secondary {
+  color: var(--db-text);
+  background: var(--db-card);
+  border-color: var(--db-border-strong);
+}
+
+.db-btn--secondary:hover:not(:disabled) {
+  border-color: var(--db-accent);
+}
+
+.db-btn--danger {
+  color: #ffffff;
+  background: var(--db-danger);
+}
+
+/* ---------- Form fields ---------- */
+
+.db-field {
+  display: grid;
+  gap: 6px;
+  min-width: 0;
+}
+
+.db-label {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--db-text);
+}
+
+.db-help {
+  font-size: 0.82rem;
+  color: var(--db-muted);
+}
+
+.db-input,
+.db-select,
+.db-textarea {
+  width: 100%;
+  min-height: 42px;
+  padding: 0.6rem 0.75rem;
+  color: var(--db-text);
+  background: var(--db-card);
+  border: 1px solid var(--db-border-strong);
+  border-radius: var(--db-radius-sm);
+  outline: none;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+.db-textarea {
+  min-height: 96px;
+  resize: vertical;
+}
+
+.db-input:focus,
+.db-select:focus,
+.db-textarea:focus {
+  border-color: var(--db-accent);
+  box-shadow: 0 0 0 3px rgba(0, 113, 227, 0.15);
+}
+
+.db-input::placeholder,
+.db-textarea::placeholder {
+  color: var(--db-muted);
+}
+
+/* Input with a leading/trailing adornment ($, %, /sq ft, …) */
+.db-input-group {
+  display: flex;
+  align-items: stretch;
+  border: 1px solid var(--db-border-strong);
+  border-radius: var(--db-radius-sm);
+  background: var(--db-card);
+  overflow: hidden;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+.db-input-group:focus-within {
+  border-color: var(--db-accent);
+  box-shadow: 0 0 0 3px rgba(0, 113, 227, 0.15);
+}
+
+.db-input-group .db-input {
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.db-adornment {
+  display: inline-flex;
+  align-items: center;
+  padding: 0 0.7rem;
+  color: var(--db-muted);
+  background: var(--db-bg);
+  white-space: nowrap;
+  font-size: 0.9rem;
+}
+
+.db-adornment:first-child { border-right: 1px solid var(--db-border-strong); }
+.db-adornment:last-child { border-left: 1px solid var(--db-border-strong); }
+
+/* Checkbox / radio accent */
+.db-check,
+.db-radio {
+  width: 1rem;
+  height: 1rem;
+  accent-color: var(--db-accent);
+}
+
+.db-radio-card {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  padding: 11px 14px;
+  background: var(--db-card);
+  border: 1px solid var(--db-border-strong);
+  border-radius: var(--db-radius-sm);
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: border-color 0.15s;
+}
+
+.db-radio-card:hover {
+  border-color: var(--db-accent);
+}
+
+/* ---------- Status messages ---------- */
+
+.db-status {
+  padding: 11px 14px;
+  border-radius: var(--db-radius-sm);
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.db-status--success {
+  color: var(--db-success);
+  background: rgba(29, 125, 79, 0.1);
+  border: 1px solid rgba(29, 125, 79, 0.2);
+}
+
+.db-status--error {
+  color: var(--db-danger);
+  background: rgba(215, 0, 21, 0.08);
+  border: 1px solid rgba(215, 0, 21, 0.2);
+}
+
+/* ---------- Tables ---------- */
+
+.db-table {
+  width: 100%;
+  border-collapse: collapse;
+  border: 1px solid var(--db-border);
+  border-radius: var(--db-radius-md);
+  overflow: hidden;
+}
+
+.db-table th,
+.db-table td {
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--db-border);
+  text-align: left;
+  font-variant-numeric: tabular-nums;
+}
+
+.db-table th {
+  color: var(--db-muted);
+  font-weight: 500;
+}
+
+.db-table tr:last-child th,
+.db-table tr:last-child td {
+  border-bottom: 0;
+}
+
+/* ---------- Utilities ---------- */
+
+.db-muted { color: var(--db-muted); }
+.db-tabular { font-variant-numeric: tabular-nums; }
+
+.db-visually-hidden {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0 0 0 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}

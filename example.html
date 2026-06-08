@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#f7f7f8" />
+    <link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon-32.png" />
+    <link rel="apple-touch-icon" href="./assets/apple-touch-icon.png" />
+    <title>Den &amp; Burrow Design Standard — Demo</title>
+    <!-- Resolve theme before first paint to avoid a flash of the wrong theme. -->
+    <script>
+      (function () {
+        var pref = null;
+        try { pref = localStorage.getItem('theme'); } catch (e) {}
+        var dark = pref === 'dark' ||
+          ((!pref || pref === 'auto') && window.matchMedia &&
+            window.matchMedia('(prefers-color-scheme: dark)').matches);
+        document.documentElement.dataset.theme = dark ? 'dark' : 'light';
+      })();
+    </script>
+    <link rel="stylesheet" href="./denburrow.css" />
+  </head>
+  <body>
+    <div class="db-container">
+      <header class="db-header">
+        <div class="db-brand">
+          <div class="db-logo" role="img" aria-label="Den & Burrow"></div>
+          <div>
+            <h1>Design Standard</h1>
+            <p class="db-brand-sub">Den &amp; Burrow · component reference</p>
+          </div>
+        </div>
+        <button class="db-btn db-btn--secondary" type="button" id="themeToggle">Toggle theme</button>
+      </header>
+
+      <section class="db-card" style="margin-bottom: 20px;">
+        <p class="db-eyebrow">Buttons</p>
+        <div style="display: flex; flex-wrap: wrap; gap: 10px;">
+          <button class="db-btn db-btn--primary">Primary</button>
+          <button class="db-btn db-btn--accent">Accent</button>
+          <button class="db-btn db-btn--secondary">Secondary</button>
+          <button class="db-btn db-btn--danger">Danger</button>
+          <button class="db-btn db-btn--primary" disabled>Disabled</button>
+        </div>
+      </section>
+
+      <section class="db-card" style="margin-bottom: 20px;">
+        <p class="db-eyebrow">Form fields</p>
+        <div style="display: grid; gap: 16px; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));">
+          <label class="db-field">
+            <span class="db-label">Email address</span>
+            <input class="db-input" type="email" placeholder="you@example.com" />
+            <span class="db-help">Helper text sits under the field.</span>
+          </label>
+          <label class="db-field">
+            <span class="db-label">Amount</span>
+            <span class="db-input-group">
+              <span class="db-adornment">$</span>
+              <input class="db-input" type="number" value="140000" />
+            </span>
+          </label>
+          <label class="db-field">
+            <span class="db-label">Cost per sq ft</span>
+            <span class="db-input-group">
+              <span class="db-adornment">$</span>
+              <input class="db-input" type="number" value="200" />
+              <span class="db-adornment">/ sq ft</span>
+            </span>
+          </label>
+        </div>
+        <label class="db-radio-card" style="margin-top: 16px;">
+          <input class="db-radio" type="radio" name="demo" checked /> Option as a selectable card
+        </label>
+      </section>
+
+      <section class="db-card" style="margin-bottom: 20px;">
+        <p class="db-eyebrow">Status messages</p>
+        <div style="display: grid; gap: 10px;">
+          <p class="db-status db-status--success" style="margin: 0;">The report was emailed successfully.</p>
+          <p class="db-status db-status--error" style="margin: 0;">Verification failed. Please try again.</p>
+        </div>
+      </section>
+
+      <section class="db-card">
+        <p class="db-eyebrow">Table</p>
+        <table class="db-table">
+          <tr><th>Estimated loan capacity</th><td>$531,250</td></tr>
+          <tr><th>Land allowance</th><td>$80,000</td></tr>
+          <tr><th>Construction budget</th><td>$421,250</td></tr>
+        </table>
+      </section>
+    </div>
+
+    <script>
+      // Demo-only theme toggle: auto → light → dark, persisted in localStorage.
+      document.getElementById('themeToggle').addEventListener('click', function () {
+        var next = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';
+        document.documentElement.dataset.theme = next;
+        try { localStorage.setItem('theme', next); } catch (e) {}
+      });
+    </script>
+  </body>
+</html>
