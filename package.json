@@ -6,6 +6,7 @@
   "style": "denburrow.css",
   "files": [
     "denburrow.css",
+    "tokens.css",
     "assets",
     "example.html",
     "README.md"

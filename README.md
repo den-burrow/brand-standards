@@ -12,7 +12,8 @@ and 8–12px radii.
 ## What's here
 
 ```text
-denburrow.css        The stylesheet: design tokens + optional component classes
+denburrow.css        Full standard: imports tokens.css + base reset + db- components
+tokens.css           Design tokens only (CSS variables) — for Tailwind/other tools
 example.html         Live component reference (open it in a browser)
 assets/
   db-monogram-black.png   Full-res master (1536px), black — for light backgrounds
@@ -23,7 +24,28 @@ assets/
   apple-touch-icon.png    iOS home-screen icon (180px)
 ```
 
-## Quick start
+## Install (npm / Vite / build tools)
+
+The repo is public, so any tool can install it straight from GitHub — no token
+needed, including on Netlify/CI:
+
+```bash
+npm install github:den-burrow/brand-standards
+```
+
+```js
+// Full standard (tokens + base reset + db- components) — plain/Vite tools:
+import 'brand-standards/denburrow.css';
+
+// OR just the design tokens (no base/components) — Tailwind or tools with their
+// own base layer:
+import 'brand-standards/tokens.css';
+```
+
+Vite bundles the logo assets referenced by the CSS automatically. To pin a
+version, install from a tag/commit (e.g. `github:den-burrow/brand-standards#v1.0.0`).
+
+## Quick start (plain HTML)
 
 ```html
 <link rel="stylesheet" href="denburrow.css" />
