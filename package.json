@@ -1,0 +1,17 @@
+{
+  "name": "brand-standards",
+  "version": "1.0.0",
+  "description": "Shared Den & Burrow design standard: design tokens, components, and brand assets for the *.denandburrow.com tools.",
+  "license": "UNLICENSED",
+  "style": "denburrow.css",
+  "files": [
+    "denburrow.css",
+    "assets",
+    "example.html",
+    "README.md"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/den-burrow/brand-standards.git"
+  }
+}
