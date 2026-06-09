@@ -13,4 +13,4 @@ jobs:
         with:
           node-version: "20"
       - name: Validate CSS syntax
-        run: npx --yes csstree-validator denburrow.css tokens.css
+        run: npx --yes csstree-validator .
