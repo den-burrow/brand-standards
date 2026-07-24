@@ -356,6 +356,17 @@ textarea {
   border: 1px solid rgba(215, 0, 21, 0.2);
 }
 
+.db-status--warning {
+  color: var(--db-warning);
+  background: rgba(178, 80, 0, 0.08);
+  border: 1px solid rgba(178, 80, 0, 0.2);
+}
+
+[data-theme='dark'] .db-status--warning {
+  background: rgba(255, 159, 10, 0.1);
+  border-color: rgba(255, 159, 10, 0.25);
+}
+
 /* ---------- Tables ---------- */
 
 .db-table {
