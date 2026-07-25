@@ -92,6 +92,7 @@ All tokens are CSS custom properties on `:root` (and overridden under
 | `--db-accent-hover` | `#0077ed` | Accent hover |
 | `--db-danger` | `#d70015` | Errors / destructive |
 | `--db-success` | `#1d7d4f` | Success |
+| `--db-warning` | `#b25000` | Warnings / needs attention |
 | `--db-radius-sm/md/lg` | `8 / 10 / 12px` | Corner radii |
 | `--db-shadow` / `--db-shadow-hover` | — | Elevation |
 | `--db-font` | system stack | Typeface |
@@ -107,7 +108,7 @@ Font stack: `-apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Segoe UI', Robot
 - Fields: `db-field`, `db-label`, `db-help`, `db-input`, `db-select`,
   `db-textarea`, `db-input-group` + `db-adornment`, `db-check`, `db-radio`,
   `db-radio-card`
-- Feedback: `db-status` + `db-status--success | --error`
+- Feedback: `db-status` + `db-status--success | --warning | --error`
 - Tables: `db-table`
 - A11y: `db-visually-hidden`
 
