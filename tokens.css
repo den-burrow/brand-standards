@@ -26,6 +26,15 @@
   --db-accent-hover: #0077ed;
   --db-danger: #d70015;
   --db-success: #1d7d4f;
+  --db-warning: #b25000;
+
+  /* Identity palette — the Den & Burrow colours, for marks, rules, chart
+     series and print. NOT interactive colour: links, focus rings and accent
+     buttons stay on --db-accent, which is what the rest of this system is
+     tuned around. These exist so tools stop hard-coding the hexes. */
+  --db-brand-green: #2b3e00;
+  --db-brand-navy: #121664;
+  --db-brand-gold: #9a7d15;
 
   /* Elevation */
   --db-shadow: 0 1px 3px rgba(0, 0, 0, 0.04), 0 1px 2px rgba(0, 0, 0, 0.02);
@@ -58,6 +67,14 @@
   --db-accent-hover: #409cff;
   --db-danger: #ff453a;
   --db-success: #30d158;
+  --db-warning: #ff9f0a;
+
+  /* Same hues, lifted for a dark surface — the light values are 12–34%
+     lightness and vanish against --db-card. All three clear 4.5:1 on both
+     dark surfaces. */
+  --db-brand-green: #b5da62;
+  --db-brand-navy: #9498e6;
+  --db-brand-gold: #dac062;
 
   --db-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
   --db-shadow-hover: 0 4px 12px rgba(0, 0, 0, 0.5);

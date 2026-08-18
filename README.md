@@ -92,9 +92,23 @@ All tokens are CSS custom properties on `:root` (and overridden under
 | `--db-accent-hover` | `#0077ed` | Accent hover |
 | `--db-danger` | `#d70015` | Errors / destructive |
 | `--db-success` | `#1d7d4f` | Success |
+| `--db-warning` | `#b25000` | Warnings / needs attention |
+| `--db-brand-green` | `#2b3e00` | Identity — marks, rules, print |
+| `--db-brand-navy` | `#121664` | Identity — marks, rules, print |
+| `--db-brand-gold` | `#9a7d15` | Identity — marks, rules, print |
 | `--db-radius-sm/md/lg` | `8 / 10 / 12px` | Corner radii |
 | `--db-shadow` / `--db-shadow-hover` | — | Elevation |
 | `--db-font` | system stack | Typeface |
+
+The three identity colours are the Den & Burrow brand palette, carried over
+from the internal Apps Script tools (billing, eng-checkin). They are for
+marks, rules, chart series and print — **not** for interactive elements.
+Links, focus rings and accent buttons stay on `--db-accent`. Each has a
+lifted dark-mode value, since the light ones sit at 12–34% lightness and
+disappear on `--db-card`.
+
+One caveat: `--db-brand-gold` is 3.95:1 on white, under AA for body text.
+Use it for marks and rules, not small text on a light background.
 
 Font stack: `-apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Segoe UI', Roboto, sans-serif`.
 
@@ -107,7 +121,7 @@ Font stack: `-apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Segoe UI', Robot
 - Fields: `db-field`, `db-label`, `db-help`, `db-input`, `db-select`,
   `db-textarea`, `db-input-group` + `db-adornment`, `db-check`, `db-radio`,
   `db-radio-card`
-- Feedback: `db-status` + `db-status--success | --error`
+- Feedback: `db-status` + `db-status--success | --warning | --error`
 - Tables: `db-table`
 - A11y: `db-visually-hidden`
 

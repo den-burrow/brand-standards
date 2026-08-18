@@ -5,7 +5,11 @@ updates:
     directory: "/"
     schedule:
       interval: "weekly"
-    open-pull-requests-limit: 5
+    # 0 stops ROUTINE version-update pull requests. Dependabot SECURITY
+    # updates are a separate product and still open. Enabled on this
+    # repository on 2026-08-17 — alerts and security updates were both OFF
+    # until then, so the security half was not running at all.
+    open-pull-requests-limit: 0
     commit-message:
       prefix: "deps"
 
@@ -13,6 +17,6 @@ updates:
   - package-ecosystem: "github-actions"
     directory: "/"
     schedule:
-      interval: "weekly"
+      interval: "monthly"
     commit-message:
       prefix: "ci"
