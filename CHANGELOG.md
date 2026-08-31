@@ -17,7 +17,7 @@ and this project aims to follow [Semantic Versioning](https://semver.org/spec/v2
   - The accent is `--db-brand-gold`, which `tokens.css` already nominated for
     "marks, rules, chart series and print". It retires the site report's
     hard-coded `#a8331f` brick red and the brief's `#ae8a54` brass **as frame
-    colours** — a document may still use its own colours inside the frame,
+    colors** — a document may still use its own colors inside the frame,
     because the site report's parcel outline is a map key and the brief's
     swatch row is the client's palette, not ours.
   - Ink converges on one pair (`#1f1e1a` / `#57554e`) replacing the site

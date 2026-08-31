@@ -28,8 +28,8 @@
   --db-success: #1d7d4f;
   --db-warning: #b25000;
 
-  /* Identity palette — the Den & Burrow colours, for marks, rules, chart
-     series and print. NOT interactive colour: links, focus rings and accent
+  /* Identity palette — the Den & Burrow colors, for marks, rules, chart
+     series and print. NOT interactive color: links, focus rings and accent
      buttons stay on --db-accent, which is what the rest of this system is
      tuned around. These exist so tools stop hard-coding the hexes. */
   --db-brand-green: #2b3e00;

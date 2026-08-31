@@ -100,7 +100,7 @@ All tokens are CSS custom properties on `:root` (and overridden under
 | `--db-shadow` / `--db-shadow-hover` | — | Elevation |
 | `--db-font` | system stack | Typeface |
 
-The three identity colours are the Den & Burrow brand palette, carried over
+The three identity colors are the Den & Burrow brand palette, carried over
 from the internal Apps Script tools (billing, eng-checkin). They are for
 marks, rules, chart series and print — **not** for interactive elements.
 Links, focus rings and accent buttons stay on `--db-accent`. Each has a
