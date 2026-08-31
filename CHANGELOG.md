@@ -9,6 +9,26 @@ and this project aims to follow [Semantic Versioning](https://semver.org/spec/v2
 
 ### Added
 
+- `print.css` — the shared print frame for Den & Burrow documents: cover,
+  header lockup, footer, and one canonical set of ink/rule/accent tokens. It
+  exists because the Site Report (`01.3`) and the Design Direction Report
+  (`01.4`) had drifted into four different "brand" accents between them, and
+  they land in the same client packet.
+  - The accent is `--db-brand-gold`, which `tokens.css` already nominated for
+    "marks, rules, chart series and print". It retires the site report's
+    hard-coded `#a8331f` brick red and the brief's `#ae8a54` brass **as frame
+    colours** — a document may still use its own colours inside the frame,
+    because the site report's parcel outline is a map key and the brief's
+    swatch row is the client's palette, not ours.
+  - Ink converges on one pair (`#1f1e1a` / `#57554e`) replacing the site
+    report's `#1a1a18` and the brief's `#33352c`.
+  - It deliberately does **not** set `@page`. The site report is landscape
+    sheets, the brief is portrait and flows; each declares its own geometry.
+  - `--db-print-logo` is a data URI of the curated `assets/logo-144.png`, so a
+    self-contained deliverable can inline the whole file and still show the
+    mark with no external reference. The accent and cover-ground tokens carry
+    literal fallbacks for that same case, where the `@import` cannot resolve.
+
 - `--db-warning` design token (light `#b25000`, dark `#ff9f0a`) and a
   `db-status--warning` component variant, for the "needs attention, not an
   error" state that sits between success and danger.
