@@ -36,6 +36,17 @@
   --db-brand-navy: #121664;
   --db-brand-gold: #9a7d15;
 
+  /* Added 2026-08-31 for Stripe, and a brand color in its own right. The three
+     above leave one obvious hole: gold at 47deg and navy at 237deg are already
+     near-complementary, and green at 78deg is analogous to the gold — so
+     100-210deg is empty. This sits at 216deg.
+
+     It exists because lightening the navy was the other option and it walks
+     straight into periwinkle: raising lightness on a 237deg hue at 69%
+     saturation is how periwinkle is made. A separate hue avoids that, and
+     leaves --db-brand-navy untouched so nothing already drawn in navy moves. */
+  --db-brand-slate: #324d76;
+
   /* Elevation */
   --db-shadow: 0 1px 3px rgba(0, 0, 0, 0.04), 0 1px 2px rgba(0, 0, 0, 0.02);
   --db-shadow-hover: 0 4px 12px rgba(0, 0, 0, 0.08), 0 2px 4px rgba(0, 0, 0, 0.04);
@@ -75,6 +86,12 @@
   --db-brand-green: #b5da62;
   --db-brand-navy: #9498e6;
   --db-brand-gold: #dac062;
+
+  /* Slate lifted. NOTE the saturation: the three above all land on 62%, but
+     slate's own is 40% and forcing it to 62 turns it into a periwinkle, which
+     is the exact thing this color was chosen to avoid. Hue and saturation are
+     held and only lightness moves, 33% to 68%. 5.68:1 on --db-card. */
+  --db-brand-slate: #8da7ce;
 
   --db-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
   --db-shadow-hover: 0 4px 12px rgba(0, 0, 0, 0.5);
