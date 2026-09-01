@@ -24,6 +24,14 @@ and this project aims to follow [Semantic Versioning](https://semver.org/spec/v2
     into the periwinkle it was chosen to avoid. Hue and saturation are held and
     only lightness moves, 33% → 68%. It reads 5.68:1 on `--db-card`.
 
+- `--db-brand-slate-tint` — `#eef1f6` light, `#212730` dark. A light ground in
+  the slate hue, for a panel that should read as ours rather than as plain
+  white. It is Stripe's **accent color** as of 2026-08-31, which is the
+  background of invoice emails and hosted pages. 1.13:1 against white on
+  purpose — enough to read as a panel edge, not enough to look like a second
+  background. The dark value is a GROUND rather than a lifted accent, because a
+  light panel has no meaning on a dark surface.
+
 - `db-monogram-white.png` — the reversed monogram, which the set never had.
 
 ### Changed

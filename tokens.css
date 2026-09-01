@@ -47,6 +47,17 @@
      leaves --db-brand-navy untouched so nothing already drawn in navy moves. */
   --db-brand-slate: #324d76;
 
+  /* A light ground in the slate hue, for a panel that should read as ours
+     rather than as plain white. Set as Stripe's ACCENT color on 2026-08-31,
+     which is the background of its invoice emails and hosted pages — the brand
+     color is the mark and the button, this is what sits behind them.
+
+     Hue held at 216, saturation dropped to 33% and lightness raised to 95%.
+     It is 1.13:1 against white, which is deliberate: enough to read as a panel
+     edge, not enough to look like a second background. Body text on it is
+     14.87:1 and --db-brand-slate on it is 7.54:1. */
+  --db-brand-slate-tint: #eef1f6;
+
   /* Elevation */
   --db-shadow: 0 1px 3px rgba(0, 0, 0, 0.04), 0 1px 2px rgba(0, 0, 0, 0.02);
   --db-shadow-hover: 0 4px 12px rgba(0, 0, 0, 0.08), 0 2px 4px rgba(0, 0, 0, 0.04);
@@ -92,6 +103,12 @@
      is the exact thing this color was chosen to avoid. Hue and saturation are
      held and only lightness moves, 33% to 68%. 5.68:1 on --db-card. */
   --db-brand-slate: #8da7ce;
+
+  /* The tint inverted into a GROUND, not lifted like an accent. A light panel
+     has no meaning on a dark surface; what carries over is "a panel in the
+     slate hue, one step off the page". Hue held, 20% saturation, 16% lightness.
+     --db-text on it is 13.8:1. */
+  --db-brand-slate-tint: #212730;
 
   --db-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
   --db-shadow-hover: 0 4px 12px rgba(0, 0, 0, 0.5);
