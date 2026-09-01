@@ -39,13 +39,23 @@ All twelve are PNG with a transparent background.
 |---|---|---|
 | black | `#000201` | **Not** pure `#000000`. Two units of green, one of blue. |
 | white | `#ffffff` | The reversed set, for a dark ground. |
-| gold | `#a38b00` | **This is NOT `--db-brand-gold`.** |
+| gold | `#9a7d15` | Was `#a38b00` until 2026-08-31. See below. |
 
-**The gold does not match the token.** `tokens.css` sets
-`--db-brand-gold: #9a7d15`; the artwork is `#a38b00` — greener and brighter.
-Nobody has said which is correct, so **both are recorded and neither has been
-changed.** A tool that draws a gold rule beside a gold logo will show the
-difference. Settle it before that happens rather than after.
+**The gold conflict is settled: the token wins.** The artwork shipped at
+`#a38b00`, greener and brighter than `--db-brand-gold: #9a7d15`. Max chose the
+token value on 2026-08-31, so **all five gold assets were refilled with
+`#9a7d15`** — `db-arch-gold.png`, `db-lockup-gold.png`,
+`db-lockup-tagline-gold.png`, `db-monogram-gold.png` and `logo-gold-144.png`.
+Only the RGB changed; every alpha channel and every dimension is untouched.
+The artwork and `tokens.css` now agree, so nothing has to be remembered.
+
+**One consequence is not resolved.** `logo-gold-144.png` is `--db-logo-dark`
+and `db-monogram-gold.png` is copied into the tools, and both are used on DARK
+grounds. `#9a7d15` on `--db-card` (`#2c2c2e`) is **3.53:1**, below 4.5:1 — and
+`#a38b00` was 4.15:1, so this made it slightly worse. That is exactly what the
+lifted `--db-brand-gold: #dac062` dark value exists for (7.76:1). **A gold mark
+for dark surfaces probably wants its own file at `#dac062`.** Nobody has asked
+for one yet.
 
 ### Two of the twelve were already here
 
