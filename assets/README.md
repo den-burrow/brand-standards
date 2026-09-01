@@ -18,30 +18,46 @@ These have stable names and something depends on each one. Do not rename them.
 The Hub copies several of these into `public/` during its build, with
 `dashboard/scripts/sync-brand-icons.mjs`. Renaming one breaks that script.
 
-## The 2026 master export — not in use yet
+## The 2026 master export — identified and renamed
 
-`2026-Logo_MASTER - Assets_1.png` through `_12.png`.
+Identified and renamed on 2026-08-31 by reading the pixels, not the file names.
+The export is **four variants in three colors**, and the old `_1` to `_12` names
+carried none of that.
 
-- **Nine** are the full lockup at 1500×2501: the arch outline, the DB monogram,
-  the DEN & BURROW wordmark, and the DESIGN | BUILD line.
-- **Three** are the monogram alone at 1536×1536 (`_4`, `_8`, `_12`).
+| Variant | Black | White | Gold | Size |
+|---|---|---|---|---|
+| Arch + monogram + wordmark + DESIGN \| BUILD | `db-lockup-tagline-black.png` | `db-lockup-tagline-white.png` | `db-lockup-tagline-gold.png` | 1500×2501 |
+| Arch + monogram + wordmark | `db-lockup-black.png` | `db-lockup-white.png` | `db-lockup-gold.png` | 1500×2501 |
+| Arch + monogram | `db-arch-black.png` | `db-arch-white.png` | `db-arch-gold.png` | 1500×2501 |
+| Monogram alone | `db-monogram-black.png` | `db-monogram-white.png` | `db-monogram-gold.png` | 1536×1536 |
 
-They are committed exactly as they came out of the design file, under the
-exporter's own names. That is deliberate. The point of committing them was to
-stop them existing on one disk only. **Nothing references them.**
+All twelve are PNG with a transparent background.
 
-### Before using them
+### The ink colors, measured
 
-The names carry no meaning — `_1` and `_5` are both tall, and which is black,
-which is gold and which is reversed is not recorded anywhere. Someone who knows
-the set has to:
+| Name | Hex | Note |
+|---|---|---|
+| black | `#000201` | **Not** pure `#000000`. Two units of green, one of blue. |
+| white | `#ffffff` | The reversed set, for a dark ground. |
+| gold | `#a38b00` | **This is NOT `--db-brand-gold`.** |
 
-1. Identify what each of the twelve is.
-2. Rename them on the pattern the curated files use, for example
-   `logo-lockup-black.png`, `monogram-gold.png`.
-3. Decide which ones replace the current curated files, and update `tokens.css`
-   and `sync-brand-icons.mjs` together.
+**The gold does not match the token.** `tokens.css` sets
+`--db-brand-gold: #9a7d15`; the artwork is `#a38b00` — greener and brighter.
+Nobody has said which is correct, so **both are recorded and neither has been
+changed.** A tool that draws a gold rule beside a gold logo will show the
+difference. Settle it before that happens rather than after.
 
-Do not point `tokens.css` at a file called `2026-Logo_MASTER - Assets_7.png`.
-The space in the name and the number that means nothing would both outlive the
-person who chose them.
+### Two of the twelve were already here
+
+`_4` and `_12` were **byte-identical** to `db-monogram-black.png` and
+`db-monogram-gold.png` — same md5, not merely similar. They were deleted rather
+than renamed, because renaming them would have collided with the curated files
+the tools already copy at build time. `db-monogram-white.png` (was `_8`) is new:
+there was no reversed monogram before.
+
+### Still to decide
+
+Nothing points at the new names yet. `tokens.css` still uses `logo-144.png` and
+`logo-gold-144.png`, and `sync-brand-icons.mjs` still copies the monograms.
+Whether the 2026 lockups replace those is open, and `tokens.css` and
+`sync-brand-icons.mjs` have to change together when it is settled.
