@@ -148,6 +148,51 @@ gold monogram automatically. Dark mode is **opt-in** — set the attribute on
 
 Light-only tools can simply never set the attribute.
 
+## The four lockups — vector
+
+`assets/` carries the four approved lockups as **SVG**, extracted from
+`2026_Logo Master.pdf` (Drive) with `pdftocairo -svg`. They are the artwork
+itself: 156 vector paths, no raster, and **no font** — the letterforms are
+outlines.
+
+| File | What it is |
+| --- | --- |
+| `lockup-full.svg` | Pill frame, monogram, DEN & BURROW, *DESIGN \| BUILD* |
+| `lockup-reduced.svg` | Pill frame, monogram, DEN & BURROW |
+| `lockup-monogram.svg` | Pill frame, monogram only |
+| `mark.svg` | The DB monogram alone, no frame |
+
+**Place a lockup; never rebuild one.** Setting "Den & Burrow" as live text
+beside the monogram is a lookalike, and it needs Century Schoolbook — which is
+licensed and cannot be embedded in a document sent to a client. An SVG needs no
+font at all.
+
+The two variants struck through in red on the master sheet are exploratory and
+are deliberately not here.
+
+**Scale by height, never by width.** The frame is a hairline; setting a width
+and letting the height follow is how it ends up too heavy beside body text.
+
+```css
+.masthead { background: url('./assets/lockup-reduced.svg') no-repeat; height: 44px; }
+```
+
+```typst
+// Typst, for a generated PDF
+#image("assets/lockup-full.svg", height: 44pt)
+```
+
+### Typography in the mark
+
+The master sheet names its own faces: **Century Schoolbook Bold** and
+**Italic**, and **Gill Sans MT Regular**. All three are inside the artwork as
+outlines, so nothing here needs them installed.
+
+For BODY text in a generated document use **Liberation Sans** — metrically
+identical to Arial and freely redistributable, where Arial is not. `--db-font`
+below is the system stack, which is right for a web page and impossible for a
+PDF, because a PDF must embed what it uses.
+
 ## Logo paths
 
 `denburrow.css` references the logo via two variables:
